@@ -34,9 +34,80 @@
   --sh:0 2px 12px rgba(0,0,0,.08);
   --sh2:0 8px 28px rgba(0,0,0,.13);
 }
+/* ── LIGHT MODE ── */
+body.light{
+  --bg:#f0ede8;
+  --surface:#ffffff;
+  --surface2:#e8e4dc;
+  --border:#d0ccc4;
+  --text:#1a1714;
+  --muted:#7a7570;
+  --sh:0 2px 12px rgba(0,0,0,.06);
+  --sh2:0 8px 28px rgba(0,0,0,.10);
+}
+body.light .home-title{color:var(--text);}
+body.light .home-subtitle{color:rgba(26,23,20,.5);}
+body.light .home-subtitle em{color:rgba(26,23,20,.75);}
+body.light .home-footer{color:rgba(26,23,20,.35);}
+body.light .topbar{border-bottom:1px solid rgba(0,0,0,.08);}
+body.light .back-btn{background:rgba(0,0,0,.07);border-color:rgba(0,0,0,.12);color:var(--text);}
+body.light .topbar-title{color:var(--text);}
+body.light .classement-row:nth-child(odd){background:#e2ddd7;}
+body.light .classement-row:nth-child(even){background:#d8d3cc;}
+body.light .classement-row.cl-first{background:linear-gradient(90deg,rgba(245,166,35,.25),rgba(220,215,208,.95));}
+body.light .classement-header{background:linear-gradient(135deg,#4a7fa8,#3d6a8f);}
+body.light .cl-name{color:rgba(26,23,20,.9);}
+body.light .timer-digits{color:var(--text);}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle-wrap{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;margin-bottom:4px;}
+.theme-toggle-label{font-size:13px;font-weight:600;color:rgba(255,255,255,.5);}
+body.light .theme-toggle-label{color:rgba(26,23,20,.5);}
+.theme-toggle{position:relative;width:48px;height:26px;cursor:pointer;flex-shrink:0;}
+.theme-toggle input{opacity:0;width:0;height:0;position:absolute;}
+.theme-track{position:absolute;inset:0;background:rgba(255,255,255,.15);border-radius:13px;transition:background .25s;border:1.5px solid rgba(255,255,255,.2);}
+body.light .theme-track{background:rgba(0,0,0,.12);border-color:rgba(0,0,0,.15);}
+.theme-toggle input:checked~.theme-track{background:var(--accent2);}
+.theme-thumb{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .25s;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.2);}
+.theme-toggle input:checked~.theme-track .theme-thumb{transform:translateX(22px);}
+
+/* ── SCORE OBJECTIF ── */
+.objectif-row{display:flex;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.objectif-label{font-size:13px;font-weight:600;color:var(--text);flex:1;}
+.objectif-input{width:80px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rsm);padding:8px 10px;color:var(--text);font-family:'Syne',sans-serif;font-size:16px;font-weight:800;text-align:center;outline:none;transition:border-color .2s;}
+.objectif-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-s);}
+.objectif-input:disabled{opacity:.35;}
+
+/* toggle switch réutilisable */
+.tog{position:relative;width:40px;height:22px;cursor:pointer;flex-shrink:0;}
+.tog input{opacity:0;width:0;height:0;position:absolute;}
+.tog-track{position:absolute;inset:0;background:var(--border);border-radius:11px;transition:background .2s;}
+.tog input:checked~.tog-track{background:var(--accent);}
+.tog-thumb{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.tog input:checked~.tog-track .tog-thumb{transform:translateX(18px);}
+
+/* Alerte fin de partie */
+.game-over-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.7);
+  display:flex;align-items:center;justify-content:center;
+  z-index:500;padding:24px;
+  animation:fadeIn .2s ease;
+}
+.game-over-box{
+  background:var(--surface);border-radius:24px;padding:28px 24px;
+  text-align:center;max-width:340px;width:100%;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  animation:pop .3s cubic-bezier(.34,1.56,.64,1);
+}
+.game-over-emoji{font-size:52px;margin-bottom:12px;}
+.game-over-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.game-over-sub{font-size:14px;color:var(--muted);font-weight:500;line-height:1.5;margin-bottom:20px;}
+.game-over-player{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--accent);margin-bottom:4px;}
+.game-over-btn{width:100%;padding:13px;background:var(--accent);border:none;border-radius:var(--r);color:#fff;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(232,73,15,.28);}
+
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{height:100%;overflow:hidden}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);width:100%;max-width:430px;margin:0 auto;height:100%;overflow:hidden;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);width:100%;max-width:430px;margin:0 auto;height:100%;overflow:hidden;transition:background .3s;}
 
 /* ── SCREENS ── */
 .screen{position:fixed;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;display:flex;flex-direction:column;transition:opacity .26s ease,transform .26s ease;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
@@ -323,6 +394,13 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
       <div class="home-card-arrow">›</div>
     </div>
   </div>
+  <div class="theme-toggle-wrap">
+    <span class="theme-toggle-label">☀️ Mode clair</span>
+    <label class="theme-toggle">
+      <input type="checkbox" id="theme-checkbox" onchange="toggleTheme(this.checked)">
+      <div class="theme-track"><div class="theme-thumb"></div></div>
+    </label>
+  </div>
   <div class="home-footer">Données sauvegardées automatiquement 💾</div>
 </div>
 
@@ -350,6 +428,17 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     <div id="game-block" style="display:none">
       <div class="manche-row">
         <div class="manche-badge">Manche <span id="manche-count">1</span></div>
+      </div>
+      <div class="card" style="padding:14px 14px 10px;">
+        <!-- Score objectif row -->
+        <div class="objectif-row">
+          <div class="objectif-label">🎯 Score objectif</div>
+          <input class="objectif-input" id="objectif-input" type="number" placeholder="ex: 500" inputmode="numeric" disabled oninput="saveObjectif()">
+          <label class="tog">
+            <input type="checkbox" id="objectif-toggle" onchange="toggleObjectif(this.checked)">
+            <div class="tog-track"><div class="tog-thumb"></div></div>
+          </label>
+        </div>
       </div>
       <div class="card" style="padding:14px;">
         <div id="scores-list"></div>
@@ -488,8 +577,27 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 </div>
 
 <div class="toast" id="toast"></div>
+<div class="game-over-overlay" id="game-over-overlay" style="display:none" onclick="closeGameOver()">
+  <div class="game-over-box" onclick="event.stopPropagation()">
+    <div class="game-over-emoji">🏁</div>
+    <div class="game-over-title">Partie terminée !</div>
+    <div class="game-over-player" id="game-over-player"></div>
+    <div class="game-over-sub" id="game-over-sub"></div>
+    <button class="game-over-btn" onclick="closeGameOver()">Continuer quand même</button>
+  </div>
+</div>
 
 <script>
+// ══════════════════════════════════════════════
+// THEME
+// ══════════════════════════════════════════════
+let lightMode = load('lightMode', false);
+function toggleTheme(on){
+  lightMode = on;
+  document.body.classList.toggle('light', on);
+  save('lightMode', on);
+}
+
 // ══════════════════════════════════════════════
 // NAVIGATION
 // ══════════════════════════════════════════════
@@ -564,6 +672,11 @@ function startGame(){
 function showGame(){
   document.getElementById('setup-block').style.display='none';
   document.getElementById('game-block').style.display='block';
+  // restore objectif UI
+  const tog = document.getElementById('objectif-toggle');
+  const inp = document.getElementById('objectif-input');
+  if(tog){ tog.checked = objectifEnabled; }
+  if(inp){ inp.disabled = !objectifEnabled; if(objectifValue>0) inp.value=objectifValue; }
   renderScoreInputs();
   if(manche>1) renderClassement();
   else document.getElementById('classement-wrap').style.display='none';
@@ -611,6 +724,35 @@ function renderClassement(){
     </div>`;
   }).join('');
 }
+// ══ SCORE OBJECTIF ══
+let objectifEnabled = false;
+let objectifValue = 0;
+
+function toggleObjectif(on){
+  objectifEnabled = on;
+  document.getElementById('objectif-input').disabled = !on;
+  save('objectifEnabled', on);
+}
+function saveObjectif(){
+  objectifValue = parseInt(document.getElementById('objectif-input').value)||0;
+  save('objectifValue', objectifValue);
+}
+function checkObjectif(){
+  if(!objectifEnabled || objectifValue<=0) return;
+  const triggered = players.filter(p => Math.abs(p.total) >= objectifValue || p.total >= objectifValue);
+  // check if any player reached or exceeded
+  const over = players.filter(p => p.total >= objectifValue || p.total <= -objectifValue);
+  if(over.length===0) return;
+  const names = over.map(p=>p.emoji+' '+p.name).join(', ');
+  document.getElementById('game-over-player').textContent = names;
+  document.getElementById('game-over-sub').textContent =
+    `${over.length>1?'Ces joueurs atteignent':'Ce joueur atteint'} le seuil de ${objectifValue} pts. La partie est peut-être terminée !`;
+  document.getElementById('game-over-overlay').style.display='flex';
+}
+function closeGameOver(){
+  document.getElementById('game-over-overlay').style.display='none';
+}
+
 function validateRound(){
   players.forEach(p=>{
     const v=parseInt(document.getElementById('round-'+p.origIndex)?.value||'0')||0;
@@ -620,11 +762,14 @@ function validateRound(){
   renderScoreInputs();renderClassement();
   setTimeout(()=>document.getElementById('classement-wrap')?.scrollIntoView({behavior:'smooth',block:'nearest'}),120);
   showToast('✓ Manche validée !');
+  checkObjectif();
 }
 function resetGame(){
   if(!confirm('Remettre à zéro toute la partie ?'))return;
   players=[];manche=1;gameStarted=false;
+  objectifEnabled=false;objectifValue=0;
   save('players',[]);save('manche',1);save('gameStarted',false);save('setupNames',[]);
+  save('objectifEnabled',false);save('objectifValue',0);
   document.getElementById('classement-wrap').style.display='none';
   showSetup();showToast('Partie réinitialisée');
 }
@@ -921,7 +1066,14 @@ function showToast(msg){
 // INIT
 // ══════════════════════════════════════════════
 function init(){
+  // Theme
+  if(lightMode){
+    document.body.classList.add('light');
+    document.getElementById('theme-checkbox').checked=true;
+  }
   // Points
+  objectifEnabled = load('objectifEnabled', false);
+  objectifValue   = load('objectifValue', 0);
   if(gameStarted) showGame();
   else{
     const names=load('setupNames',[]);

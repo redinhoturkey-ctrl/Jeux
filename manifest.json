@@ -1,0 +1,42 @@
+{
+  "name": "Jeux – Assistant jeux de société",
+  "short_name": "Jeux",
+  "description": "Assistant jeux de société : comptage de points et roulette de tirage au sort.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a1814",
+  "theme_color": "#1a1814",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Points",
+      "short_name": "Points",
+      "description": "Comptage de points",
+      "url": "./index.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Roulette",
+      "short_name": "Roulette",
+      "description": "Tirage au sort",
+      "url": "./index.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

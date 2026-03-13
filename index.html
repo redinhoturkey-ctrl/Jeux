@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, interactive-widget=resizes-content">
 <meta name="theme-color" content="#1a1814">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -36,23 +36,31 @@
   --sh2: 0 8px 28px rgba(0,0,0,.13);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;overflow:hidden}
+html{height:100%;overflow:hidden}
 body{
   font-family:'Plus Jakarta Sans',sans-serif;
   background:var(--bg);
   color:var(--text);
-  max-width:430px;margin:0 auto;
+  width:100%;max-width:430px;
+  margin:0 auto;
+  height:100%;
+  overflow:hidden;
 }
 
 /* ── SCREEN SYSTEM ── */
 .screen{
-  position:absolute;inset:0;max-width:430px;margin:0 auto;
+  position:fixed;
+  top:0;bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;max-width:430px;
   display:flex;flex-direction:column;
   transition:opacity .26s ease,transform .26s ease;
   overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
 }
-.screen.hidden{opacity:0;pointer-events:none;transform:translateX(36px)}
-.screen.slide-left{transform:translateX(-36px)}
+.screen.hidden{opacity:0;pointer-events:none;transform:translateX(calc(-50% + 36px))}
+.screen.slide-left{transform:translateX(calc(-50% - 36px))}
 
 /* ══════════════════════════════
    HOME
